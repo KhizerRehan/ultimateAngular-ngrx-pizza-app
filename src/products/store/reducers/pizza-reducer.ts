@@ -62,11 +62,12 @@ export function PizzaReducer(
     }
 
     case fromPizzaActionsConstants.LOAD_PIZZAS_SUCCESS: {
-
+      const data = action.payload;
       return {
         ...state,
         loading: false,
-        loaded: true
+        loaded: true,
+        data
       }
     }
 
