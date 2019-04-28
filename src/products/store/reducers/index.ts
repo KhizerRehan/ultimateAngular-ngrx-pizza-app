@@ -18,6 +18,17 @@ export const getPizzasState = createSelector(
   (state: ProductState) => state.pizzas
 );
 
+// GET SLICE OF PIZZA `entities` PROP FROM PIZZA STATE RETRIEVED FROM PRODUCT STORE STATE:
+export const getPizzasEntities = createSelector(
+  getPizzasState,
+  fromPizzasReducer.getPizzasEntities
+);
+
+export const getAllPizzas = createSelector(
+  getPizzasEntities,
+  (entities) => Object.keys(entities).map((id) => entities[parseInt(id,10)])
+);
+
 // GET SLICE OF PIZZA `loading` PROP FROM PIZZA STATE RETRIEVED FROM PRODUCT STORE STATE:
 export const getLoading = createSelector(
   getPizzasState,
@@ -30,8 +41,3 @@ export const getLoaded = createSelector(
   fromPizzasReducer.getPizzasLoaded
 );
 
-// GET SLICE OF PIZZA `data` PROP FROM PIZZA STATE RETRIEVED FROM PRODUCT STORE STATE:
-export const getPizzas = createSelector(
-  getPizzasState,
-  fromPizzasReducer.getAllPizzas
-);
