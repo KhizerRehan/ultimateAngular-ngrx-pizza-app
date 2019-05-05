@@ -1,8 +1,10 @@
 
 // GET SLICE OF PIZZA STATE FROM PRODUCT STORE STATE:
 import {createSelector} from "@ngrx/store";
+import * as fromRoot from '../../../app/store';
 import * as fromProductFeature from "../reducers";
 import * as fromPizzasReducer from "../reducers/pizza-reducer";
+import {Pizza} from "../../models/pizza.model";
 
 export const getPizzasState = createSelector(
   fromProductFeature.getProductState,
@@ -31,3 +33,12 @@ export const getLoaded = createSelector(
   getPizzasState,
   fromPizzasReducer.getPizzasLoaded
 );
+
+export const getSelectedPizza = createSelector(
+  getPizzasEntities,
+  fromRoot.getRouterState,
+  (entities, router): Pizza => {
+    return router.state && entities[router.state.params.pizzaId]
+  }
+);
+
