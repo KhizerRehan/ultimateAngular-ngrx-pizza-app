@@ -20,7 +20,7 @@ export const PizzaInitialState: PizzaState = {
 export function PizzaReducer(
   state: PizzaState = PizzaInitialState,
   action: fromPizzaActionsCreators.PizzaActions
-) {
+):PizzaState {
 
   switch (action.type) {
 
