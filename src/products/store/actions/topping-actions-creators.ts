@@ -1,23 +1,23 @@
 import {Action} from "@ngrx/store";
-import * as fromPizzaToppingActions from './topping-actions';
 import {Topping} from "../../models/topping.model";
+import * as fromPizzaToppingsActionsConstants from './topping-actions';
 
 export class LoadToppings implements Action {
-  readonly type = fromPizzaToppingActions.LOAD_TOPPINGS;
+  readonly type = fromPizzaToppingsActionsConstants.LOAD_TOPPINGS;
 }
 
 export class LoadToppingsSuccess implements Action {
-  readonly type = fromPizzaToppingActions.LOAD_TOPPINGS_SUCCESS;
-  constructor(payload: Topping[]) {
-
-  }
+  readonly type = fromPizzaToppingsActionsConstants.LOAD_TOPPINGS_SUCCESS;
+  constructor(public payload: Topping[]) {}
 }
 
 export class LoadToppingsFail implements Action {
-  readonly type = fromPizzaToppingActions.LOAD_TOPPINGS_FAIL;
-  constructor(payload: any) {
-  }
+  readonly type = fromPizzaToppingsActionsConstants.LOAD_TOPPINGS_FAIL;
+  constructor(public payload: any) {}
 }
 
 // Action Types:
-export type PizzaToppingsAction = LoadToppings | LoadToppingsSuccess | LoadToppingsFail
+export type ToppingsAction =
+  | LoadToppings
+  | LoadToppingsFail
+  | LoadToppingsSuccess;
